@@ -11,9 +11,20 @@
         </div>
     </div>
     <div class='col-md-9'>
+    <div class='mb-3'>
         <%= form_with(model:[@post,@paragraph]) do |form| %>
-             <%= form.hidden_field :element_type, value: 'paragraph' %>
+            <%= form.hidden_field :element_type, value: 'paragraph' %>
             <%= form.submit "Paragraph", class: 'btn btn-primary'%>
         <% end %>
+        </div>
+        <% @post.elements.each do |element|%>
+            <% if element.persisted? %>
+            <%= form_with(model:[@post,element]) do |form| %>
+            <%=form.text_area :content %>
+            <%= form.submit "Save", class: 'btn btn-primary'%>
+        <% end %>
+                <% end %>
+
+       <% end %>
     </div>
 </div>
