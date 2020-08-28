@@ -1,10 +1,14 @@
 module Authors
 class PostsController < AuthorsController
-  before_action :set_post, only: [:edit, :update, :destroy]
+  before_action :set_post, only: [:show, :edit, :update, :destroy]
 
   # GET /posts
   def index
     @posts = current_author.posts
+  end
+
+  # GET /posts/1
+  def show
   end
 
   # GET /posts/new
@@ -14,6 +18,7 @@ class PostsController < AuthorsController
 
   # GET /posts/1/edit
   def edit
+    @paragraph = @post.elements.build(element_type: 'paragraph')
   end
 
   # POST /posts
@@ -35,7 +40,7 @@ class PostsController < AuthorsController
       render :edit
     end
   end
-
+ 
   # DELETE /posts/1
   def destroy
     @post.destroy
@@ -50,7 +55,7 @@ class PostsController < AuthorsController
 
     # Only allow a trusted parameter "white list" through.
     def post_params
-      params.require(:post).permit(:title, :description)
+      params.require(:post).permit(:title, :description, :published, :published_at, :author_id)
     end
 end
 end
