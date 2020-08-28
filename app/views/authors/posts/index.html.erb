@@ -1,35 +1,15 @@
-<p id="notice"><%= notice %></p>
+<h4 class='d-flex justify-content-between mb-4'>
+<span>Post</span>
+<%= link_to 'New Post', new_post_path, class: 'btn btn-primary' %>
+</h4>
 
-<h1>Posts</h1>
-
-<table>
-  <thead>
-    <tr>
-      <th>Title</th>
-      <th>Description</th>
-      <th>Published</th>
-      <th>Published at</th>
-      <th>Author</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @posts.each do |post| %>
-      <tr>
-        <td><%= post.title %></td>
-        <td><%= post.description %></td>
-        <td><%= post.published %></td>
-        <td><%= post.published_at %></td>
-        <td><%= post.author %></td>
-        <td><%= link_to 'Show', post %></td>
-        <td><%= link_to 'Edit', edit_post_path(post) %></td>
-        <td><%= link_to 'Destroy', post, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
-
-<br>
-
-<%= link_to 'New Post', new_post_path %>
+<% @posts.each do |post| %>
+<%= link_to edit_post_path(post), class: 'text-decoration-none' do %>
+  <div class="card mt-2">
+    <div class="card-body">
+    <h5 class='cart-title text-dark'><%= post.title %></h5>
+    <p class='text-secondary'><%= post.description%></p>
+</div>
+</div>
+  <% end %>
+<% end %>

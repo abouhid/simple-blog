@@ -1,6 +1,14 @@
-<h1>Editing Post</h1>
+<%= link_to 'Back', posts_path, class: 'btn btn-secondary mb-3' %>
 
-<%= render 'form', post: @post %>
 
-<%= link_to 'Show', @post %> |
-<%= link_to 'Back', posts_path %>
+<div class="row">
+    <div class="col-md-3">
+        <div class='card'>
+            <div class='card-body'>
+                <h4 class='card-title'>Editing Post</h4>
+                <%= render 'form', post: @post %>
+
+            </div>
+        </div>
+    </div>
+</div>
